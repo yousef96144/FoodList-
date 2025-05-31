@@ -24,9 +24,9 @@ struct ContentView: View {
     let restaurantsList = [
         trail(name: "Stanford Dish", image: "listImage1", location: "Palto ALto", rated: 3.4, distance: 4.2),
         trail(name: "Joesiph Dish", image: "listImage2", location: "Ismailia", rated: 4.5, distance: 30.0),
-        trail(name: "Stanford Dish", image: "listImage3", location: "Palto ALto", rated: 2.5, distance: 4.2),
-        trail(name: "Stanford Dish", image: "listImage4", location: "Nasser city", rated: 4.0, distance: 4.2),
-        trail(name: "Stanford Dish", image: "listImage5", location: "cairo", rated: 3.4, distance: 10.0)
+        trail(name: "Burger Dish", image: "listImage3", location: "Palto ALto", rated: 2.5, distance: 4.2),
+        trail(name: "Pasta Dish", image: "listImage4", location: "Nasser city", rated: 4.0, distance: 4.2),
+        trail(name: "Mix Dish", image: "listImage5", location: "cairo", rated: 3.4, distance: 10.0)
     ]
     var body: some View {
         NavigationView {
@@ -69,7 +69,7 @@ struct ContentView: View {
                     Text("See All >").font(.system(size: 15)).fontWeight(.bold).foregroundColor(.red)
                 }.padding()
                 List(restaurantsList) { trail in
-                    NavigationLink(destination: DetailsView()) {
+                    NavigationLink(destination: DetailsView(trail: trail)) {
                         trailRow(trail: trail)
                     }.listRowSeparator(.hidden)
                     

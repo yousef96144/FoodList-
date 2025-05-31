@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct DetailsView: View {
+    var trail: trail
+   
     var body: some View {
         VStack {
             ZStack {
-                Image("listImage1")
+                Image("\(String(describing: trail.image))")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 600)
@@ -31,14 +33,14 @@ struct DetailsView: View {
                             .padding(.bottom , 50)
                     }.frame(maxWidth: 360,alignment: .bottomTrailing)
                         HStack {
-                            Label("3.4", systemImage: "star.fill")
+                            Label(String(format: "%.1f", trail.rated), systemImage: "star.fill")
                                 .font(.caption).bold().padding(3).background(.white).cornerRadius(5)
-                            Text("3.4 Km")
+                            Text(String(format: "%.1f", trail.distance) + "km")
                                 .font(.caption).bold().padding(3).background(.white).cornerRadius(5)
                         }.frame(maxWidth: 360,alignment: .topLeading)
                         
-                        Text("Stanford Dish").font(.title2).fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity,alignment:.topLeading)
-                        Text("Palto Alto").foregroundColor(.white).frame(maxWidth: .infinity,alignment:.topLeading)
+                    Text(trail.name).font(.title2).fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity,alignment:.topLeading)
+                    Text(trail.location).foregroundColor(.white).frame(maxWidth: .infinity,alignment:.topLeading)
                         
                         HStack {
                             Text("Wi-Fi").font(.caption).bold().padding(3).background(.white).cornerRadius(5)
@@ -97,5 +99,5 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView()
+    DetailsView( trail: trail(name: "Stanford Dish", image: "listImage1", location: "Palto ALto", rated: 3.4, distance: 4.2))
 }
